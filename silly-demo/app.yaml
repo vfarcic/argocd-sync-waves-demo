@@ -44,7 +44,7 @@ spec:
               name: silly-demo
         - name: DB_NAME
           value: silly-demo
-        image: c8n.io/vfarcic/silly-demo:1.4.46
+        image: c8n.io/vfarcic/silly-demo:1.4.47
         livenessProbe:
           httpGet:
             path: /
@@ -130,14 +130,13 @@ metadata:
 apiVersion: devopstoolkitseries.com/v1alpha1
 kind: SQLClaim
 metadata:
-  annotations:
-    description: This is a silly demo
-    language: Go
-    owner: Viktor Farcic (viktor@farcic.com)
-    team: dot
   labels:
     app.kubernetes.io/name: silly-demo
-  name: silly-demo
+  metadata:
+    annotations:
+      argocd.argoproj.io/hook: PreSync
+      argocd.argoproj.io/sync-wave: "-10"
+  name: silly-demo-password
   namespace: silly-demo
 spec:
   compositionSelector:

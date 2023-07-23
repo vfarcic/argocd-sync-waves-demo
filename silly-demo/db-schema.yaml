@@ -1,7 +1,10 @@
+---
 apiVersion: databases.schemahero.io/v1alpha4
 kind: Database
 metadata:
   name: silly-demo
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 spec:
   immediateDeploy: true
   connection:
@@ -25,26 +28,49 @@ spec:
         value: "5432"
       dbname:
         value: silly-demo
-
 ---
-
 apiVersion: schemas.schemahero.io/v1alpha4
 kind: Table
 metadata:
   name: videos
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 spec:
   database: silly-demo
   name: videos
   schema:
     postgres:
       primaryKey:
-      - id
+        - id
       columns:
-      - name: id
-        type: text
-        constraints:
-          notNull: true
-      - name: title
-        type: text
-        constraints:
-          notNull: true
+        - name: id
+          type: text
+          constraints:
+            notNull: true
+        - name: title
+          type: text
+          constraints:
+            notNull: true
+---
+apiVersion: schemas.schemahero.io/v1alpha4
+kind: Table
+metadata:
+  name: other-table
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  database: silly-demo
+  name: other-table
+  schema:
+    postgres:
+      primaryKey:
+        - id
+      columns:
+        - name: id
+          type: text
+          constraints:
+            notNull: true
+        - name: title
+          type: int
+          constraints:
+            notNull: true
