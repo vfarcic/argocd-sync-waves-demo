@@ -26,25 +26,25 @@ spec:
           valueFrom:
             secretKeyRef:
               key: endpoint
-              name: silly-demo-db
+              name: silly-demo
         - name: DB_PORT
           valueFrom:
             secretKeyRef:
               key: port
-              name: silly-demo-db
+              name: silly-demo
         - name: DB_USER
           valueFrom:
             secretKeyRef:
               key: username
-              name: silly-demo-db
+              name: silly-demo
         - name: DB_PASS
           valueFrom:
             secretKeyRef:
               key: password
-              name: silly-demo-db
+              name: silly-demo
         - name: DB_NAME
-          value: silly-demo-db
-        image: c8n.io/vfarcic/silly-demo:1.4.44
+          value: silly-demo
+        image: c8n.io/vfarcic/silly-demo:1.4.45
         livenessProbe:
           httpGet:
             path: /
