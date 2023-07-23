@@ -32,6 +32,7 @@ kind: ControllerConfig
 metadata:
   name: crossplane-provider-kubernetes
   annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "-1"
 spec:
   serviceAccountName: crossplane-provider-kubernetes
