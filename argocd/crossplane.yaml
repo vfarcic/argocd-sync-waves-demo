@@ -7,7 +7,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-options: ServerSideApply=true
+    argocd.argoproj.io/sync-options: ServerSideApply=false
 spec:
   project: default
   source:
@@ -24,3 +24,5 @@ spec:
       allowEmpty: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=false
+      # - Validate=false
