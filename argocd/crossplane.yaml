@@ -6,22 +6,19 @@ metadata:
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
 spec:
-  project: production
+  project: default
   source:
-    chart: crossplane
-    repoURL: https://charts.crossplane.io/stable
-    targetRevision: 1.12.2
-    helm:
-      releaseName: crossplane
+    repoURL: https://github.com/vfarcic/argocd-sync-waves-demo
+    targetRevision: HEAD
+    path: crossplane
   destination:
     server: https://kubernetes.default.svc
-    namespace: crossplane-system
+    namespace: demo
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
+      allowEmpty: true
     syncOptions:
       - CreateNamespace=true
