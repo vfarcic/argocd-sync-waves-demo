@@ -6,6 +6,8 @@ metadata:
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true
 spec:
   project: default
   source:
@@ -22,3 +24,5 @@ spec:
       allowEmpty: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
+      # - Validate=false
