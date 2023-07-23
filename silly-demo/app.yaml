@@ -44,7 +44,7 @@ spec:
               name: silly-demo
         - name: DB_NAME
           value: silly-demo
-        image: c8n.io/vfarcic/silly-demo:1.4.45
+        image: c8n.io/vfarcic/silly-demo:1.4.46
         livenessProbe:
           httpGet:
             path: /
@@ -144,7 +144,7 @@ spec:
     matchLabels:
       db: postgresql
       provider: google-official
-  id: silly-demo-db
+  id: silly-demo
   parameters:
     size: small
     version: "13"
