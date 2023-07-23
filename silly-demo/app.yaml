@@ -39,7 +39,7 @@ spec:
               secretKeyRef:
                 name: silly-demo-db
                 key: port
-          - name: DB_UER
+          - name: DB_USER
             valueFrom:
               secretKeyRef:
                 name: silly-demo-db
