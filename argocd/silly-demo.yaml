@@ -2,24 +2,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane
+  name: silly-demo-app
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    chart: crossplane
-    repoURL: https://charts.crossplane.io/stable
-    targetRevision: 1.12.2
-    helm:
-      releaseName: crossplane
+    repoURL: https://github.com/vfarcic/argocd-sync-waves-demo
+    targetRevision: HEAD
+    path: silly-demo
   destination:
     server: https://kubernetes.default.svc
-    namespace: crossplane-system
+    namespace: demo
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
+      allowEmpty: true
     syncOptions:
       - CreateNamespace=true
