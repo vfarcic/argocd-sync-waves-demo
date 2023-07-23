@@ -9,22 +9,22 @@ spec:
       host:
         valueFrom:
           secretKeyRef:
-            name: silly-demo-db
+            name: silly-demo
             key: endpoint
       user:
         valueFrom:
           secretKeyRef:
-            name: silly-demo-db
+            name: silly-demo
             key: username
       password:
         valueFrom:
           secretKeyRef:
-            name: silly-demo-db
+            name: silly-demo
             key: password
       port:
         value: "5432"
       dbname:
-        value: silly-demo-db
+        value: silly-demo
 
 ---
 

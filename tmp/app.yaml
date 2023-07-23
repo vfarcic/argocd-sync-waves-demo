@@ -21,35 +21,35 @@ spec:
         app.kubernetes.io/name: silly-demo
     spec:
       containers:
-      - env:
-        - name: DB_ENDPOINT
-          valueFrom:
-            secretKeyRef:
-              key: endpoint
-              name: silly-demo-db
-        - name: DB_PORT
-          valueFrom:
-            secretKeyRef:
-              key: port
-              name: silly-demo-db
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              key: username
-              name: silly-demo-db
-        - name: DB_PASS
-          valueFrom:
-            secretKeyRef:
-              key: password
-              name: silly-demo-db
-        - name: DB_NAME
-          value: silly-demo-db
-        image: c8n.io/vfarcic/silly-demo:1.4.44
+      - image: c8n.io/vfarcic/silly-demo:1.4.39
         livenessProbe:
           httpGet:
             path: /
             port: 8080
         name: silly-demo
+        env:
+          - name: DB_ENDPOINT
+            valueFrom:
+              secretKeyRef:
+                name: silly-demo-db
+                key: endpoint
+          - name: DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: silly-demo-db
+                key: port
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: silly-demo-db
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: silly-demo-db
+                key: password
+          - name: DB_NAME
+            value: silly-demo-db
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -99,7 +99,6 @@ metadata:
   name: silly-demo
   namespace: silly-demo
 spec:
-  ingressClassName: traefik
   rules:
   - host: sillydemo.127.0.0.1.nip.io
     http:
@@ -111,41 +110,4 @@ spec:
               number: 8080
         path: /
         pathType: ImplementationSpecific
----
-apiVersion: v1
-data:
-  password: cG9zdGdyZXM=
-kind: Secret
-metadata:
-  annotations:
-    description: This is a silly demo
-    language: Go
-    owner: Viktor Farcic (viktor@farcic.com)
-    team: dot
-  labels:
-    app.kubernetes.io/name: silly-demo
-  name: silly-demo-password
-  namespace: silly-demo
----
-apiVersion: devopstoolkitseries.com/v1alpha1
-kind: SQLClaim
-metadata:
-  annotations:
-    description: This is a silly demo
-    language: Go
-    owner: Viktor Farcic (viktor@farcic.com)
-    team: dot
-  labels:
-    app.kubernetes.io/name: silly-demo
-  name: silly-demo
-  namespace: silly-demo
-spec:
-  compositionSelector:
-    matchLabels:
-      db: postgresql
-      provider: google-official
-  id: silly-demo-db
-  parameters:
-    size: small
-    version: "13"
 ---
