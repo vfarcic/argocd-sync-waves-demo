@@ -12,9 +12,9 @@ data:
 apiVersion: devopstoolkitseries.com/v1alpha1
 kind: SQLClaim
 metadata:
-  name: silly-demo
+  name: silly-demo-db
 spec:
-  id: silly-demo
+  id: silly-demo-db
   compositionSelector:
     matchLabels:
       provider: google-official

@@ -14,7 +14,7 @@ spec:
     path: schema-hero
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo
+    namespace: schemahero-system
   syncPolicy:
     automated:
       selfHeal: true
