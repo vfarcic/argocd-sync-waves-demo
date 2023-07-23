@@ -44,7 +44,7 @@ spec:
               name: silly-demo
         - name: DB_NAME
           value: silly-demo
-        image: c8n.io/vfarcic/silly-demo:1.4.47
+        image: c8n.io/vfarcic/silly-demo:1.4.48
         livenessProbe:
           httpGet:
             path: /
@@ -136,7 +136,7 @@ metadata:
     annotations:
       argocd.argoproj.io/hook: PreSync
       argocd.argoproj.io/sync-wave: "-10"
-  name: silly-demo-password
+  name: silly-demo
   namespace: silly-demo
 spec:
   compositionSelector:
