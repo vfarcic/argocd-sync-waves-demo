@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/vfarcic/argocd-sync-waves-demo
     targetRevision: HEAD
-    path: crossplane
+    path: crossplane-wrong
   destination:
     server: https://kubernetes.default.svc
     namespace: demo
