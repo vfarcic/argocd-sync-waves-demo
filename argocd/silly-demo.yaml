@@ -14,7 +14,7 @@ spec:
     path: silly-demo
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo
+    namespace: silly-demo
   syncPolicy:
     automated:
       selfHeal: true
