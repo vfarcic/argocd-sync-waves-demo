@@ -27,6 +27,30 @@ spec:
             path: /
             port: 8080
         name: silly-demo
+        # TODO: 
+        env:
+          - name: DB_ENDPOINT
+            valueFrom:
+              secretKeyRef:
+                name: silly-demo-db
+                key: endpoint
+          - name: DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: silly-demo-db
+                key: port
+          - name: DB_UER
+            valueFrom:
+              secretKeyRef:
+                name: silly-demo-db
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: silly-demo-db
+                key: password
+          - name: DB_NAME
+            value: silly-demo
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -77,6 +101,7 @@ metadata:
   namespace: silly-demo
 spec:
   rules:
+    # TODO:
   - host: sillydemo.127.0.0.1.nip.io
     http:
       paths:
