@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-app
+  name: schema-hero-app
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/vfarcic/argocd-sync-waves-demo
     targetRevision: HEAD
-    path: crossplane
+    path: schema-hero
   destination:
     server: https://kubernetes.default.svc
     namespace: demo
