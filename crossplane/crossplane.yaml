@@ -11,7 +11,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
     # argocd.argoproj.io/hook: PreSync
 spec:
-  project: production
+  project: default
   source:
     chart: crossplane
     repoURL: https://charts.crossplane.io/stable
