@@ -9,7 +9,7 @@ metadata:
   labels:
     app.kubernetes.io/name: silly-demo
   name: silly-demo
-  namespace: default
+  namespace: silly-demo
 spec:
   replicas: 2
   selector:
@@ -52,7 +52,7 @@ metadata:
   labels:
     app.kubernetes.io/name: silly-demo
   name: silly-demo
-  namespace: default
+  namespace: silly-demo
 spec:
   ports:
   - name: http
@@ -74,7 +74,7 @@ metadata:
   labels:
     app.kubernetes.io/name: silly-demo
   name: silly-demo
-  namespace: default
+  namespace: silly-demo
 spec:
   rules:
   - host: sillydemo.com
