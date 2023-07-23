@@ -50,7 +50,7 @@ spec:
                 name: silly-demo-db
                 key: password
           - name: DB_NAME
-            value: silly-demo
+            value: silly-demo-db
         ports:
         - containerPort: 8080
         readinessProbe:
