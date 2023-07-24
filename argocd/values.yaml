@@ -5,6 +5,20 @@ configs:
   cm:
     application.resourceTrackingMethod: annotation
     timeout.reconciliation: 30s
+    resource.customizations.health.devopstoolkitseries.com_SQLClaim: |
+      hs = {}
+      hs.status = "Healthy"
+      synced = true
+      for i, condition in ipairs(obj.status.conditions) do
+        if condition.type == "Synced" and condition.status ~= "True"
+          hs.status = "Degraded"
+          synced_message = condition.reason
+          if condition.message then
+            synced_message = synced_message .. ": " ..condition.message
+          end
+        end
+      end
+      return hs
 server:
   extraArgs:
     - --insecure
