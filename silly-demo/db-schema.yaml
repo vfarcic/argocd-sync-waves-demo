@@ -3,8 +3,6 @@ apiVersion: databases.schemahero.io/v1alpha4
 kind: Database
 metadata:
   name: silly-demo
-  annotations:
-    argocd.argoproj.io/hook: PreSync
 spec:
   immediateDeploy: true
   connection:
@@ -33,8 +31,6 @@ apiVersion: schemas.schemahero.io/v1alpha4
 kind: Table
 metadata:
   name: videos
-  annotations:
-    argocd.argoproj.io/hook: PreSync
 spec:
   database: silly-demo
   name: videos
