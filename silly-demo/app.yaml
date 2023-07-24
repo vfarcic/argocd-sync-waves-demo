@@ -44,7 +44,7 @@ spec:
               name: silly-demo
         - name: DB_NAME
           value: silly-demo
-        image: c8n.io/vfarcic/silly-demo:1.4.50
+        image: c8n.io/vfarcic/silly-demo:1.4.52
         livenessProbe:
           httpGet:
             path: /
@@ -118,10 +118,6 @@ data:
 kind: Secret
 metadata:
   annotations:
-    description: This is a silly demo
-    language: Go
-    owner: Viktor Farcic (viktor@farcic.com)
-    team: dot
     argocd.argoproj.io/sync-wave: "-10"
   labels:
     app.kubernetes.io/name: silly-demo
