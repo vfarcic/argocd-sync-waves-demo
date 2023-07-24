@@ -122,6 +122,7 @@ metadata:
     language: Go
     owner: Viktor Farcic (viktor@farcic.com)
     team: dot
+    argocd.argoproj.io/sync-wave: "-10"
   labels:
     app.kubernetes.io/name: silly-demo
   name: silly-demo-password
