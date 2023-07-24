@@ -44,7 +44,7 @@ spec:
               name: silly-demo
         - name: DB_NAME
           value: silly-demo
-        image: c8n.io/vfarcic/silly-demo:1.4.47
+        image: c8n.io/vfarcic/silly-demo:1.4.49
         livenessProbe:
           httpGet:
             path: /
@@ -130,13 +130,12 @@ metadata:
 apiVersion: devopstoolkitseries.com/v1alpha1
 kind: SQLClaim
 metadata:
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-10"
   labels:
     app.kubernetes.io/name: silly-demo
-  metadata:
-    annotations:
-      argocd.argoproj.io/hook: PreSync
-      argocd.argoproj.io/sync-wave: "-10"
-  name: silly-demo-password
+  name: silly-demo
   namespace: silly-demo
 spec:
   compositionSelector:
